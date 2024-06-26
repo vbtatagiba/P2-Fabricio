@@ -1,0 +1,21 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <center>
+        <h1 class="text-center">Bem-vindo à Página Inicial</h1>
+        {% if user.is_authenticated %}
+            <!-- Conteúdo adicional visível apenas para usuários autenticados -->
+            <p>Olá, {{ user.username }}!</p>
+            <p>Aqui está o conteúdo exclusivo para usuários autenticados.</p> <nav>
+                <a  id="button" href="{% url 'register' %}">Registrar</a>
+                <a id="button" href="{% url 'object_list' %}">Objetos</a>
+                <a id="button" href="{% url 'chat' %}">Chat</a>
+                <a id="button" href="{% url 'logout' %}">Logout</a>
+            </nav>
+        {% else %}
+            <p>Por favor, faça login para acessar o conteúdo exclusivo.</p>
+        {% endif %}
+    </center>
+    <!-- Outro conteúdo da página inicial aqui -->
+{% endblock %}

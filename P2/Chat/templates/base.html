@@ -1,0 +1,32 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Título Aqui</title>
+    <!-- Adicione seus links para CSS aqui -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="header">
+
+    <div class="user-info">
+        {% if user.is_authenticated %}
+            <p>Bem-vindo, {{ user.username }}!</p>
+            <a id="button2" href="{% url 'logout' %}">Sair</a>
+        {% else %}
+            <a id="button2" href="{% url 'login' %}">Entrar</a> |
+            <a id="button2" href="{% url 'register' %}">Registrar</a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="content">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

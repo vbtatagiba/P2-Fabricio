@@ -1,0 +1,12 @@
+<!-- templates/object_form.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ form.instance.pk|yesno:"Editar Objeto,Criar Novo Objeto" }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+    <a id="button" href="{% url 'object_list' %}">Voltar para a Lista</a>
+{% endblock %}

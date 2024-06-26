@@ -1,0 +1,11 @@
+<!-- templates/object_confirm_delete.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Você tem certeza que deseja excluir "{{ object.name }}"?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmar</button>
+    </form>
+    <a id="button" href="{% url 'object_list' %}">Cancelar</a>
+{% endblock %}

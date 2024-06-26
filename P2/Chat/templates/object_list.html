@@ -1,0 +1,20 @@
+<!-- templates/object_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Lista de Objetos</h1>
+    {% if user.is_authenticated %}
+        <a id="button" href="{% url 'object_create' %}">Criar Novo Objeto</a>
+    {% endif %}
+    <ul>
+        {% for obj in objects %}
+            <li>
+                {{ obj.name }} -
+                {% if user.is_authenticated %}
+                    <a id="button" href="{% url 'object_edit' obj.id %}">Editar</a> |
+                    <a id="button" href="{% url 'object_delete' obj.id %}">Excluir</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
